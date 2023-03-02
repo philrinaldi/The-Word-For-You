@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Chatbot from '../components/Chatbot';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           <div className="col-span-3 text-center mt-10">
             <h1 className="text-5xl p-3 font-bold ">Welcome To...The Word For You.</h1>
             <p className="text-md p-3">A Word For You is an interactive experience that uses AI to help connect your real-life experiences with scripture and the word from God..</p>
+            <Chatbot />
           </div>
         </div>
       </main>
