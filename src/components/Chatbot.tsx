@@ -1,8 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import getConfig from 'next/config';
+import { Configuration, OpenAIApi } from "openai";
+
+const { publicRuntimeConfig } = getConfig();
+const openaiKey = publicRuntimeConfig.NEXT_PUBLIC_REACT_APP_OPENAI_API_KEY;
+    console.log(openaiKey);
+    
+    const configuration = new Configuration({
+        organization: "org-a2UA77iM0165p0q00DkVUVQp",
+        apiKey: openaiKey,
+    });
+
+    const openai = new OpenAIApi(configuration);
+
+    console.log(openaiKey);
+
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
+
+  const queryAPI = async () => {
+    
+
+    console.log('Fethcing API');
+    //const response = await openai.listEngines();
+    //console.log(response);
+  }
+
+  useEffect(() => {
+    queryAPI();
+  }, [messages]);
 
   function handleInput(event) {
     setInputValue(event.target.value);
@@ -25,6 +53,7 @@ function Chatbot() {
     setMessages([...messages, newMessage]);
     setInputValue('');
     // Call your chatbot API or function here and handle the response
+    console.log(openaiKey);
   }
 
   return (
